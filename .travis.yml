@@ -1,0 +1,40 @@
+language: c
+sudo: false
+env:
+  global:
+    - RACKET_DIR=~/racket
+  matrix:
+    - RACKET_VERSION="7.0"
+    - RACKET_VERSION="7.1"
+    - RACKET_VERSION="7.2"
+    - RACKET_VERSION="7.3"
+    - RACKET_VERSION="7.4"
+    - RACKET_VERSION="7.5"
+    - RACKET_VERSION="HEAD"
+matrix:
+  allow_failures:
+    - env: RACKET_VERSION="HEAD"
+
+before_install:
+  - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+  - cat ../travis-racket/install-racket.sh | bash
+  - export PATH="${RACKET_DIR}/bin:${PATH}"
+
+install:
+ # Turnstile+
+ - git clone https://github.com/stchang/macrotypes.git
+ - raco pkg install --auto macrotypes/macrotypes-lib/
+ - raco pkg install --auto macrotypes/macrotypes-example/
+ - raco pkg install --auto macrotypes/rackunit-macrotypes-lib/
+ - raco pkg install --auto macrotypes/macrotypes-test/
+ - raco pkg install --auto macrotypes/turnstile-lib/
+ - raco pkg install --auto macrotypes/turnstile-example/
+ - raco pkg install --auto macrotypes/turnstile-test/
+ # Cur
+ - git clone -b popl2020-artifact https://github.com/stchang/cur.git
+
+script:
+ - raco test --package macrotypes-test
+ - raco test --package turnstile-test
+ - raco test --package cur-test
+ - raco setup
