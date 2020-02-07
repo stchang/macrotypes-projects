@@ -32,9 +32,16 @@ install:
  - raco pkg install --auto macrotypes/turnstile-test/
  # Cur
  - git clone -b popl2020-artifact https://github.com/stchang/cur.git
+ - raco pkg install --auto cur/cur-lib/
+ - raco pkg install --auto cur/cur-test/
+ # CBPV Scheme
+ - git clone https://github.com/maxsnew/modal-scheme.git
+ - raco pkg install --auto modal-scheme/sbpv/
 
 script:
  - raco test --package macrotypes-test
  - raco test --package turnstile-test
  - raco test --package cur-test
+ - raco test --package modal-scheme
+ - raco test --timeout 200 modal-scheme/examples/
  - raco setup
