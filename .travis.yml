@@ -42,6 +42,6 @@ script:
  - raco test --package macrotypes-test
  - raco test --package turnstile-test
  - raco test --package cur-test
- - raco test --package modal-scheme
+ - raco test --package sbpv
  - raco test --timeout 200 modal-scheme/examples/
  - raco setup
