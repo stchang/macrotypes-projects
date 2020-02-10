@@ -29,7 +29,7 @@ env:
     - NAME="Typed Syndicate" RACKET_VERSION="7.5"
     - NAME="Typed Syndicate" RACKET_VERSION="HEAD"
 
-matrix:
+jobs:
   allow_failures:
     - env: RACKET_VERSION="HEAD"
 
