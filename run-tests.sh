@@ -2,7 +2,7 @@
 
 # run tests
 
-RACO_FLAGS=( -j 4 )
+RACO_FLAGS=( -j 2 )
 
 case $NAME in
     "Turnstile+")
