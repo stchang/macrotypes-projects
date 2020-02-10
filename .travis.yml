@@ -9,7 +9,8 @@ env:
   # maximum travis-ci runtime/job = 50 min
   # 2 max cores(?) per job?
   #
-  # not possible to use nested env values to construct a build matrix:
+  # not possible to use nested env values to construct a build matrix,
+  # so must list all combinations manually:
   # https://stackoverflow.com/questions/46575415/can-i-multiply-options-in-matrix-include-with-the-env-option
   # https://github.com/travis-ci/travis-ci/issues/1519
   #

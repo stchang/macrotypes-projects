@@ -2,20 +2,22 @@
 
 # run tests
 
+RACO_FLAGS=( -j 2 )
+
 case $NAME in
     "Turnstile+")
-	raco test -j 2 --package macrotypes-test
-	raco test -j 2 --package turnstile-test
+	raco test "${RACO_FLAGS[@]}" --package macrotypes-test
+	raco test "${RACO_FLAGS[@]}" --package turnstile-test
 	;;
     "Cur")
-	# Cur tests cannot use multiple cores
+	# Cur tests cannot use multiple cores, for some reason
 	raco test --package cur-test
 	;;
     "SBPV Scheme")
-	raco test -j 2 --package sbpv
-	raco test -j 2 --timeout 200 modal-scheme/examples/
+	raco test "${RACO_FLAGS[@]}" --package sbpv
+	raco test "${RACO_FLAGS[@]}" --timeout 200 modal-scheme/examples/
 	;;
     "Typed Syndicate")
-	raco test -j 2 syndicate/racket/typed/
+	raco test "${RACO_FLAGS[@]}" syndicate/racket/typed/
 	;;
 esac
