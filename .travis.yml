@@ -1,5 +1,12 @@
 language: c
 os: linux
+
+jobs:
+  - name: "Turnstile+"
+  - name: "Cur"
+  - name: "SBPV Scheme"
+  - name: "Typed Syndicate"
+  
 env:
   global:
     - RACKET_DIR=~/racket
