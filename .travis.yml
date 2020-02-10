@@ -39,7 +39,7 @@ install:
  - raco pkg install --auto modal-scheme/sbpv/
  # Typed Syndicate
  - git clone -b behav https://github.com/tonyg/syndicate.git
- - raco pkg install -n syndicate syndicate/racket/
+ - raco pkg install --auto -n syndicate syndicate/racket/
 
 script:
  - raco test --package macrotypes-test
