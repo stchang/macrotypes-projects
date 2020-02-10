@@ -37,9 +37,12 @@ before_install:
   - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
   - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
 
-install: ./install.sh
+install:
+  - chmod +x ./install.sh
+  - ./install.sh
 
 script:
+  - chmod +x ./run-tests.sh
   - ./run-tests.sh
   - raco setup -j 2
 
