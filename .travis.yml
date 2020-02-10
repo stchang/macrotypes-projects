@@ -18,8 +18,8 @@ env:
 # each "-" after "include:" starts a new job;
 # maximum travis-ci runtime/job = 50 min
 # TODO: how to avoid writing out same install script for each job
-  jobs:
-   include:
+jobs:
+  include:
     - name: "Turnstile+"
       before_install: # install Racket
       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
