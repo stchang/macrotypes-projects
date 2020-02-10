@@ -24,29 +24,29 @@ before_install:
 install:
  # Turnstile+
  - git clone https://github.com/stchang/macrotypes.git
- - raco pkg install --auto -j 4 macrotypes/macrotypes-lib/
- - raco pkg install --auto -j 4 macrotypes/macrotypes-example/
- - raco pkg install --auto -j 4 macrotypes/rackunit-macrotypes-lib/
- - raco pkg install --auto -j 4 macrotypes/macrotypes-test/
- - raco pkg install --auto -j 4 macrotypes/turnstile-lib/
- - raco pkg install --auto -j 4 macrotypes/turnstile-example/
- - raco pkg install --auto -j 4 macrotypes/turnstile-test/
+ - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
+ - raco pkg install --auto -j 2 macrotypes/macrotypes-example/
+ - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+ - raco pkg install --auto -j 2 macrotypes/macrotypes-test/
+ - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
+ - raco pkg install --auto -j 2 macrotypes/turnstile-example/
+ - raco pkg install --auto -j 2 macrotypes/turnstile-test/
  # Cur
  - git clone -b popl2020-artifact https://github.com/stchang/cur.git
- - raco pkg install --auto -j 4 cur/cur-lib/
- - raco pkg install --auto -j 4 cur/cur-test/
+ - raco pkg install --auto -j 2 cur/cur-lib/
+ - raco pkg install --auto -j 2 cur/cur-test/
  # CBPV Scheme
  - git clone https://github.com/maxsnew/modal-scheme.git
- - raco pkg install --auto -j 4 modal-scheme/sbpv/
+ - raco pkg install --auto -j 2 modal-scheme/sbpv/
  # Typed Syndicate
  - git clone -b behav https://github.com/tonyg/syndicate.git
- - raco pkg install --auto -j 4 -n syndicate syndicate/racket/
+ - raco pkg install --auto -j 2 -n syndicate syndicate/racket/
 
 script:
- - raco test -j 4 --package macrotypes-test
- - raco test -j 4 --package turnstile-test
- - raco test -j 4 --timeout 200 --package cur-test
- - raco test -j 4 --package sbpv
- - raco test -j 4 --timeout 200 modal-scheme/examples/
- - raco test -j 4 syndicate/racket/typed/
- - raco setup -j 4
+ - raco test -j 2 --package macrotypes-test
+ - raco test -j 2 --package turnstile-test
+ - raco test -j 2 --timeout 200 --package cur-test
+ - raco test -j 2 --package sbpv
+ - raco test -j 2 --timeout 200 modal-scheme/examples/
+ - raco test -j 2 syndicate/racket/typed/
+ - raco setup -j 2
