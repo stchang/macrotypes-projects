@@ -1,26 +1,20 @@
 language: c
 os: linux
 
-jobs:
-  - name: "Turnstile+"
-  - name: "Cur"
-  - name: "SBPV Scheme"
-  - name: "Typed Syndicate"
-  
 env:
   global:
     - RACKET_DIR=~/racket
-  jobs:
-#     - RACKET_VERSION="7.0"
-#     - RACKET_VERSION="7.1"
-#     - RACKET_VERSION="7.2"
-#     - RACKET_VERSION="7.3"
-    - RACKET_VERSION="7.4"
+#   jobs:
+# #     - RACKET_VERSION="7.0"
+# #     - RACKET_VERSION="7.1"
+# #     - RACKET_VERSION="7.2"
+# #     - RACKET_VERSION="7.3"
+#     - RACKET_VERSION="7.4"
     - RACKET_VERSION="7.5"
-#     - RACKET_VERSION="HEAD"
-# matrix:
-#   allow_failures:
-#     - env: RACKET_VERSION="HEAD"
+# #     - RACKET_VERSION="HEAD"
+# # matrix:
+# #   allow_failures:
+# #     - env: RACKET_VERSION="HEAD"
 
 # each "-" after "include:" starts a new job;
 # maximum travis-ci runtime/job = 50 min
@@ -62,7 +56,7 @@ jobs:
     - raco pkg install --auto -j 2 cur/cur-lib/
     - raco pkg install --auto -j 2 cur/cur-test/
     script:
-    - raco test -j 2 --timeout 200 --package cur-test
+    - raco test --package cur-test
     - raco setup -j 2
       
   - name: "CBPV Scheme"
