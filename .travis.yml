@@ -4,14 +4,14 @@ os: linux
 env:
   global:
     - RACKET_DIR=~/racket
-env:
-- RACKET_VERSION="7.0"
-- RACKET_VERSION="7.5"
-env:
-- JOB_NAME="Turnstile+"
-- JOB_NAME="Cur"
-- JOB_NAME="SBPV Scheme"
-- JOB_NAME="Typed Syndicate"
+  matrix:
+    - RACKET_VERSION="7.0"
+    - RACKET_VERSION="7.5"
+  matrix:
+    - JOB_NAME="Turnstile+"
+    - JOB_NAME="Cur"
+    - JOB_NAME="SBPV Scheme"
+    - JOB_NAME="Typed Syndicate"
 
 # matrix:
 #   allow_failures:
