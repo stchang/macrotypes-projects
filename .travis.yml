@@ -3,22 +3,24 @@ os: linux
 
 env:
   global:
-    - RACKET_DIR=~/racket PATH="${RACKET_DIR}/bin:${PATH}"
-  # not possible to use nested env values to construct a build matrix
-  # https://stackoverflow.com/questions/46575415/can-i-multiply-options-in-matrix-include-with-the-env-option
-  #
-  # each "-" after "matrix:" starts a new job;
+    - RACKET_DIR=~/racket
+
+  # each "-" after "jobs:" starts a new job;
   # maximum travis-ci runtime/job = 50 min
   # 2 max cores(?) per job?
-  matrix:
-    - RACKET_VERSION="7.0" JOB_NAME="Turnstile+"
-    - RACKET_VERSION="7.5" JOB_NAME="Turnstile+"
-    - RACKET_VERSION="7.0" JOB_NAME="Cur"
-    - RACKET_VERSION="7.5" JOB_NAME="Cur"
-    - RACKET_VERSION="7.0" JOB_NAME="SBPV Scheme"
-    - RACKET_VERSION="7.5" JOB_NAME="SBPV Scheme"
-    - RACKET_VERSION="7.0" JOB_NAME="Typed Syndicate"
-    - RACKET_VERSION="7.5" JOB_NAME="Typed Syndicate"
+  #
+  # not possible to use nested env values to construct a build matrix:
+  # https://stackoverflow.com/questions/46575415/can-i-multiply-options-in-matrix-include-with-the-env-option
+  # https://github.com/travis-ci/travis-ci/issues/1519
+  jobs:
+    - NAME="Turnstile+"      RACKET_VERSION="7.0"
+    - NAME="Turnstile+"      RACKET_VERSION="7.5"
+    - NAME="Cur"             RACKET_VERSION="7.0"
+    - NAME="Cur"             RACKET_VERSION="7.5"
+    - NAME="SBPV Scheme"     RACKET_VERSION="7.0"
+    - NAME="SBPV Scheme"     RACKET_VERSION="7.5"
+    - NAME="Typed Syndicate" RACKET_VERSION="7.0"
+    - NAME="Typed Syndicate" RACKET_VERSION="7.5"
 
 # matrix:
 #   allow_failures:
@@ -28,16 +30,16 @@ before_install:
   # install Racket
   - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
   - cat ../travis-racket/install-racket.sh | bash
-#  - export PATH="${RACKET_DIR}/bin:${PATH}"
+  - export PATH="${RACKET_DIR}/bin:${PATH}"
+install:
   # install Turnstile+
   - git clone https://github.com/stchang/macrotypes.git
   - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
   - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
   - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+script:
+  - raco setup -j 2
 
-# # each "-" after "include:" starts a new job;
-# # maximum travis-ci runtime/job = 50 min
-# # TODO: how to avoid writing out same install script for each job
 # jobs:
 #   include:
 #     - if: env(JOBNAME) = "Turnstile+"
