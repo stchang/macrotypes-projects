@@ -37,6 +37,9 @@ install:
  # CBPV Scheme
  - git clone https://github.com/maxsnew/modal-scheme.git
  - raco pkg install --auto modal-scheme/sbpv/
+ # Typed Syndicate
+ - git clone -b behav https://github.com/tonyg/syndicate.git
+ - raco pkg install -n syndicate syndicate/racket/
 
 script:
  - raco test --package macrotypes-test
@@ -44,4 +47,5 @@ script:
  - raco test --package cur-test
  - raco test --package sbpv
  - raco test --timeout 200 modal-scheme/examples/
+ - raco test syndicate/racket/typed/
  - raco setup
