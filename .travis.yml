@@ -12,19 +12,25 @@ env:
   # not possible to use nested env values to construct a build matrix:
   # https://stackoverflow.com/questions/46575415/can-i-multiply-options-in-matrix-include-with-the-env-option
   # https://github.com/travis-ci/travis-ci/issues/1519
+  #
+  # "matrix" is alias for "jobs"
   jobs:
     - NAME="Turnstile+"      RACKET_VERSION="7.0"
     - NAME="Turnstile+"      RACKET_VERSION="7.5"
+    - NAME="Turnstile+"      RACKET_VERSION="HEAD"
     - NAME="Cur"             RACKET_VERSION="7.0"
     - NAME="Cur"             RACKET_VERSION="7.5"
+    - NAME="Cur"             RACKET_VERSION="HEAD"
     - NAME="SBPV Scheme"     RACKET_VERSION="7.0"
     - NAME="SBPV Scheme"     RACKET_VERSION="7.5"
+    - NAME="SBPV Scheme"     RACKET_VERSION="HEAD"
     - NAME="Typed Syndicate" RACKET_VERSION="7.0"
     - NAME="Typed Syndicate" RACKET_VERSION="7.5"
+    - NAME="Typed Syndicate" RACKET_VERSION="HEAD"
 
-# matrix:
-#   allow_failures:
-#     - env: RACKET_VERSION="HEAD"
+matrix:
+  allow_failures:
+    - env: RACKET_VERSION="HEAD"
 
 before_install:
   # install Racket
