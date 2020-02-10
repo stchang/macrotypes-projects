@@ -2,7 +2,7 @@
 
 # install langs
 
-RACO_FLAGS=( --auto -j 2 )
+RACO_FLAGS=( --auto -j 4 )
 
 case $NAME in
     "Turnstile+")
