@@ -3,14 +3,13 @@ os: linux
 env:
   global:
     - RACKET_DIR=~/racket
-    - RACKET_VERSION="7.5"
-#   matrix:
+  jobs:
 #     - RACKET_VERSION="7.0"
 #     - RACKET_VERSION="7.1"
 #     - RACKET_VERSION="7.2"
 #     - RACKET_VERSION="7.3"
-#     - RACKET_VERSION="7.4"
-#     - RACKET_VERSION="7.5"
+    - RACKET_VERSION="7.4"
+    - RACKET_VERSION="7.5"
 #     - RACKET_VERSION="HEAD"
 # matrix:
 #   allow_failures:
@@ -19,8 +18,8 @@ env:
 # each "-" after "include:" starts a new job;
 # maximum travis-ci runtime/job = 50 min
 # TODO: how to avoid writing out same install script for each job
-jobs:
-  include:
+  jobs:
+   include:
     - name: "Turnstile+"
       before_install: # install Racket
       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
