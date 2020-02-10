@@ -15,6 +15,7 @@ matrix:
   allow_failures:
     - env: RACKET_VERSION="HEAD"
 
+# maximum travis-ci runtime = 50 min
 before_install:
   - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
   - cat ../travis-racket/install-racket.sh | bash
@@ -23,29 +24,29 @@ before_install:
 install:
  # Turnstile+
  - git clone https://github.com/stchang/macrotypes.git
- - raco pkg install --auto macrotypes/macrotypes-lib/
- - raco pkg install --auto macrotypes/macrotypes-example/
- - raco pkg install --auto macrotypes/rackunit-macrotypes-lib/
- - raco pkg install --auto macrotypes/macrotypes-test/
- - raco pkg install --auto macrotypes/turnstile-lib/
- - raco pkg install --auto macrotypes/turnstile-example/
- - raco pkg install --auto macrotypes/turnstile-test/
+ - raco pkg install --auto -j 4 macrotypes/macrotypes-lib/
+ - raco pkg install --auto -j 4 macrotypes/macrotypes-example/
+ - raco pkg install --auto -j 4 macrotypes/rackunit-macrotypes-lib/
+ - raco pkg install --auto -j 4 macrotypes/macrotypes-test/
+ - raco pkg install --auto -j 4 macrotypes/turnstile-lib/
+ - raco pkg install --auto -j 4 macrotypes/turnstile-example/
+ - raco pkg install --auto -j 4 macrotypes/turnstile-test/
  # Cur
  - git clone -b popl2020-artifact https://github.com/stchang/cur.git
- - raco pkg install --auto cur/cur-lib/
- - raco pkg install --auto cur/cur-test/
+ - raco pkg install --auto -j 4 cur/cur-lib/
+ - raco pkg install --auto -j 4 cur/cur-test/
  # CBPV Scheme
  - git clone https://github.com/maxsnew/modal-scheme.git
- - raco pkg install --auto modal-scheme/sbpv/
+ - raco pkg install --auto -j 4 modal-scheme/sbpv/
  # Typed Syndicate
  - git clone -b behav https://github.com/tonyg/syndicate.git
- - raco pkg install --auto -n syndicate syndicate/racket/
+ - raco pkg install --auto -j 4 -n syndicate syndicate/racket/
 
 script:
- - raco test --package macrotypes-test
- - raco test --package turnstile-test
- - raco test --package cur-test
- - raco test --package sbpv
- - raco test --timeout 200 modal-scheme/examples/
- - raco test syndicate/racket/typed/
- - raco setup
+ - raco test -j 4 --package macrotypes-test
+ - raco test -j 4 --package turnstile-test
+ - raco test -j 4 --package cur-test
+ - raco test -j 4 --package sbpv
+ - raco test -j 4 --timeout 200 modal-scheme/examples/
+ - raco test -j 4 syndicate/racket/typed/
+ - raco setup -j 4
