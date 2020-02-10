@@ -45,7 +45,7 @@ install:
 script:
  - raco test -j 4 --package macrotypes-test
  - raco test -j 4 --package turnstile-test
- - raco test -j 4 --package cur-test
+ - raco test -j 4 --timeout 200 --package cur-test
  - raco test -j 4 --package sbpv
  - raco test -j 4 --timeout 200 modal-scheme/examples/
  - raco test -j 4 syndicate/racket/typed/
