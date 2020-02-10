@@ -1,5 +1,6 @@
 # macrotypes-projects [![Build Status](https://travis-ci.org/stchang/macrotypes-projects.svg?branch=master)](https://travis-ci.org/stchang/macrotypes-projects)
-Projects using Turnstile+ and/or the "types-as-macros" approach to creating typed languages.
+
+Projects using [Turnstile+](https://github.com/stchang/macrotypes) and/or the "types-as-macros" approach to creating typed languages.
 
 - [Cur](https://github.com/wilbowma/cur/tree/turnstile-core):
   An extensible Coq-inspired proof assistant.
