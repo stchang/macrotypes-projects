@@ -13,7 +13,7 @@ case $NAME in
 	;;
     "SBPV Scheme")
 	raco test -j 2 --package sbpv
-	aco test -j 2 --timeout 200 modal-scheme/examples/
+	raco test -j 2 --timeout 200 modal-scheme/examples/
 	;;
     "Typed Syndicate")
 	raco test -j 2 syndicate/racket/typed/
