@@ -1,19 +1,20 @@
 language: c
-sudo: false
+os: linux
 env:
   global:
     - RACKET_DIR=~/racket
-  matrix:
-    - RACKET_VERSION="7.0"
-    - RACKET_VERSION="7.1"
-    - RACKET_VERSION="7.2"
-    - RACKET_VERSION="7.3"
-    - RACKET_VERSION="7.4"
     - RACKET_VERSION="7.5"
-    - RACKET_VERSION="HEAD"
-matrix:
-  allow_failures:
-    - env: RACKET_VERSION="HEAD"
+#   matrix:
+#     - RACKET_VERSION="7.0"
+#     - RACKET_VERSION="7.1"
+#     - RACKET_VERSION="7.2"
+#     - RACKET_VERSION="7.3"
+#     - RACKET_VERSION="7.4"
+#     - RACKET_VERSION="7.5"
+#     - RACKET_VERSION="HEAD"
+# matrix:
+#   allow_failures:
+#     - env: RACKET_VERSION="HEAD"
 
 # each "-" after "include:" starts a new job;
 # maximum travis-ci runtime/job = 50 min
