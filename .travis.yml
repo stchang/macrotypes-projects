@@ -4,100 +4,101 @@ os: linux
 env:
   global:
     - RACKET_DIR=~/racket
-   jobs:
-    - RACKET_VERSION="7.0"
-# #     - RACKET_VERSION="7.1"
-# #     - RACKET_VERSION="7.2"
-# #     - RACKET_VERSION="7.3"
-#     - RACKET_VERSION="7.4"
-    - RACKET_VERSION="7.5"
-   jobs:
-    - JOBNAME="Turnstile+"
-    - JOBNAME="Cur"
-    - JOBNAME="SBPV Scheme"
-    - JOBNAME="Typed Syndicate"
-# #     - RACKET_VERSION="HEAD"
-# # matrix:
-# #   allow_failures:
-# #     - env: RACKET_VERSION="HEAD"
+env:
+- RACKET_VERSION="7.0"
+- RACKET_VERSION="7.5"
+env:
+- JOB_NAME="Turnstile+"
+- JOB_NAME="Cur"
+- JOB_NAME="SBPV Scheme"
+- JOB_NAME="Typed Syndicate"
 
-# each "-" after "include:" starts a new job;
-# maximum travis-ci runtime/job = 50 min
-# TODO: how to avoid writing out same install script for each job
-jobs:
-  include:
-    - if: env(JOBNAME) = "Turnstile+"
-      before_install: # install Racket
-      - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
-      - cat ../travis-racket/install-racket.sh | bash
-      - export PATH="${RACKET_DIR}/bin:${PATH}"
-      install:
-      # install Turnstile+
-      - git clone https://github.com/stchang/macrotypes.git
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
-      - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-example/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-example/
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-test/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-test/
-      script:
-      - raco test -j 2 --package macrotypes-test
-      - raco test -j 2 --package turnstile-test
-      - raco setup -j 2
+# matrix:
+#   allow_failures:
+#     - env: RACKET_VERSION="HEAD"
 
-    - if: env(JOBNAME) = "Cur"
-      before_install: # install Racket
-      - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
-      - cat ../travis-racket/install-racket.sh | bash
-      - export PATH="${RACKET_DIR}/bin:${PATH}"
-      install:
-      # install Turnstile+
-      - git clone https://github.com/stchang/macrotypes.git
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
-      - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
-      # install Cur
-      - git clone -b popl2020-artifact https://github.com/stchang/cur.git
-      - raco pkg install --auto -j 2 cur/cur-lib/
-      - raco pkg install --auto -j 2 cur/cur-test/
-      script:
-      - raco test --package cur-test
-      - raco setup -j 2
+before_install: # install Racket
+  - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+  - cat ../travis-racket/install-racket.sh | bash
+  - export PATH="${RACKET_DIR}/bin:${PATH}"
 
-    - if: env(JOBNAME) = "CBPV Scheme"
-      before_install: # install Racket
-      - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
-      - cat ../travis-racket/install-racket.sh | bash
-      - export PATH="${RACKET_DIR}/bin:${PATH}"
-      install:
-      # install Turnstile+
-      - git clone https://github.com/stchang/macrotypes.git
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
-      - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
-      # install CBPV Scheme
-      - git clone https://github.com/maxsnew/modal-scheme.git
-      - raco pkg install --auto -j 2 modal-scheme/sbpv/
-      script:
-      - raco test -j 2 --package sbpv
-      - raco test -j 2 --timeout 200 modal-scheme/examples/
-      - raco setup -j 2
+# # each "-" after "include:" starts a new job;
+# # maximum travis-ci runtime/job = 50 min
+# # TODO: how to avoid writing out same install script for each job
+# jobs:
+#   include:
+#     - if: env(JOBNAME) = "Turnstile+"
+#       before_install: # install Racket
+#       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+#       - cat ../travis-racket/install-racket.sh | bash
+#       - export PATH="${RACKET_DIR}/bin:${PATH}"
+#       install:
+#       # install Turnstile+
+#       - git clone https://github.com/stchang/macrotypes.git
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
+#       - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-example/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-example/
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-test/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-test/
+#       script:
+#       - raco test -j 2 --package macrotypes-test
+#       - raco test -j 2 --package turnstile-test
+#       - raco setup -j 2
 
-    - if: env(JOBNAME) = "Typed Syndicate"
-      before_install: # install Racket
-      - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
-      - cat ../travis-racket/install-racket.sh | bash
-      - export PATH="${RACKET_DIR}/bin:${PATH}"
-      install:
-      # install Turnstile+
-      - git clone https://github.com/stchang/macrotypes.git
-      - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
-      - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
-      - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
-      # install Typed Syndicate
-      - git clone -b behav https://github.com/tonyg/syndicate.git
-      - raco pkg install --auto -j 2 -n syndicate syndicate/racket/
-      script:
-      - raco test -j 2 syndicate/racket/typed/
-      - raco setup -j 2
+#     - if: env(JOBNAME) = "Cur"
+#       before_install: # install Racket
+#       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+#       - cat ../travis-racket/install-racket.sh | bash
+#       - export PATH="${RACKET_DIR}/bin:${PATH}"
+#       install:
+#       # install Turnstile+
+#       - git clone https://github.com/stchang/macrotypes.git
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
+#       - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+#       # install Cur
+#       - git clone -b popl2020-artifact https://github.com/stchang/cur.git
+#       - raco pkg install --auto -j 2 cur/cur-lib/
+#       - raco pkg install --auto -j 2 cur/cur-test/
+#       script:
+#       - raco test --package cur-test
+#       - raco setup -j 2
+
+#     - if: env(JOBNAME) = "CBPV Scheme"
+#       before_install: # install Racket
+#       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+#       - cat ../travis-racket/install-racket.sh | bash
+#       - export PATH="${RACKET_DIR}/bin:${PATH}"
+#       install:
+#       # install Turnstile+
+#       - git clone https://github.com/stchang/macrotypes.git
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
+#       - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+#       # install CBPV Scheme
+#       - git clone https://github.com/maxsnew/modal-scheme.git
+#       - raco pkg install --auto -j 2 modal-scheme/sbpv/
+#       script:
+#       - raco test -j 2 --package sbpv
+#       - raco test -j 2 --timeout 200 modal-scheme/examples/
+#       - raco setup -j 2
+
+#     - if: env(JOBNAME) = "Typed Syndicate"
+#       before_install: # install Racket
+#       - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
+#       - cat ../travis-racket/install-racket.sh | bash
+#       - export PATH="${RACKET_DIR}/bin:${PATH}"
+#       install:
+#       # install Turnstile+
+#       - git clone https://github.com/stchang/macrotypes.git
+#       - raco pkg install --auto -j 2 macrotypes/macrotypes-lib/
+#       - raco pkg install --auto -j 2 macrotypes/turnstile-lib/
+#       - raco pkg install --auto -j 2 macrotypes/rackunit-macrotypes-lib/
+#       # install Typed Syndicate
+#       - git clone -b behav https://github.com/tonyg/syndicate.git
+#       - raco pkg install --auto -j 2 -n syndicate syndicate/racket/
+#       script:
+#       - raco test -j 2 syndicate/racket/typed/
+#       - raco setup -j 2
