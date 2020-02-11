@@ -5,6 +5,11 @@ Projects using [Turnstile+](https://github.com/stchang/macrotypes) and/or the "t
 - [Cur](https://github.com/wilbowma/cur/tree/turnstile-core):
   An extensible Coq-inspired proof assistant.
 
+- [MLish](https://github.com/stchang/mlish):
+  A language in the OCaml family with an extensible type
+  system. Implement and use new features like GADTs and type classes
+  as user libraries.
+
 - [Typed Video](https://github.com/videolang/typed-video):
   A typed variant of the [Video language](https://lang.video/) that adds [Dependent ML](https://www.cs.bu.edu/~hwxi/DML/DML.html)-style indexed types.
 

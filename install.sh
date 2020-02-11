@@ -12,6 +12,11 @@ case $NAME in
 	raco pkg install "${RACO_FLAGS[@]}" macrotypes/macrotypes-test/
 	raco pkg install "${RACO_FLAGS[@]}" macrotypes/turnstile-test/
 	;;
+    "MLish")
+	git clone https://github.com/stchang/mlish.git
+	raco pkg install "${RACO_FLAGS[@]}" mlish/mlish-lib/
+	raco pkg install "${RACO_FLAGS[@]}" mlish/mlish-test/
+	;;
     "Cur")
 	git clone -b popl2020-artifact https://github.com/stchang/cur.git
 	raco pkg install "${RACO_FLAGS[@]}" cur/cur-lib/

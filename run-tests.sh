@@ -9,6 +9,9 @@ case $NAME in
 	raco test "${RACO_FLAGS[@]}" --package macrotypes-test
 	raco test "${RACO_FLAGS[@]}" --package turnstile-test
 	;;
+    "MLish")
+	raco test "${RACO_FLAGS[@]}" --package mlish-test
+	;;
     "Cur")
 	# Cur tests cannot use multiple cores, for some reason
 	raco test --package cur-test
