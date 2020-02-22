@@ -18,6 +18,11 @@ case $NAME in
 	raco pkg install "${RACO_FLAGS[@]}" mlish/mlish-test/
 	;;
     "Cur")
+	git clone -b turnstile-core https://github.com/wilbowma/cur.git
+	raco pkg install "${RACO_FLAGS[@]}" cur/cur-lib/
+	raco pkg install "${RACO_FLAGS[@]}" cur/cur-test/
+	;;
+    "Cur2020")
 	git clone -b popl2020-artifact https://github.com/stchang/cur.git
 	raco pkg install "${RACO_FLAGS[@]}" cur/cur-lib/
 	raco pkg install "${RACO_FLAGS[@]}" cur/cur-test/

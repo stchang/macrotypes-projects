@@ -16,6 +16,10 @@ case $NAME in
 	# Cur tests cannot use multiple cores, for some reason
 	raco test --package cur-test
 	;;
+    "Cur2020")
+	# Cur tests cannot use multiple cores, for some reason
+	raco test --package cur-test
+	;;
     "SBPV Scheme")
 	raco test "${RACO_FLAGS[@]}" --package sbpv
 	raco test "${RACO_FLAGS[@]}" --timeout 200 modal-scheme/examples/
