@@ -19,7 +19,7 @@ env:
     - NAME="Turnstile+"      RACKET_VERSION="7.0"
     - NAME="Turnstile+"      RACKET_VERSION="7.5"
     - NAME="Turnstile+"      RACKET_VERSION="HEAD"
-    - NAME="MLish"           RACKET_VERSION="7.0"
+    - NAME="MLish"           RACKET_VERSION="7.1"
     - NAME="MLish"           RACKET_VERSION="7.5"
     - NAME="MLish"           RACKET_VERSION="HEAD"
     - NAME="Cur"             RACKET_VERSION="7.0"
