@@ -37,7 +37,7 @@ case $NAME in
 	raco pkg install "${RACO_FLAGS[@]}" modal-scheme/sbpv/
 	;;
     "Typed Syndicate")
-	git clone -b behav https://github.com/tonyg/syndicate.git
+	git clone https://github.com/tonyg/syndicate.git
 	raco pkg install "${RACO_FLAGS[@]}" -n syndicate syndicate/racket/
 	;;
 esac
