@@ -18,12 +18,7 @@ case $NAME in
 	raco pkg install "${RACO_FLAGS[@]}" mlish/mlish-test/
 	;;
     "Cur")
-	cd macrotypes
-	# commit before generic-type-methods
-	git checkout 25dd3c5d53c0e15d94b892651e8b463449db575a
-	raco setup -D
-	cd ..
-	git clone -b turnstile-core https://github.com/wilbowma/cur.git
+	git clone https://github.com/wilbowma/cur.git
 	raco pkg install "${RACO_FLAGS[@]}" cur/cur-lib/
 	raco pkg install "${RACO_FLAGS[@]}" cur/cur-test/
 	;;

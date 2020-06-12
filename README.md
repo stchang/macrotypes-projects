@@ -2,7 +2,7 @@
 
 Projects using [Turnstile+](https://github.com/stchang/macrotypes) and/or the "types-as-macros" approach to creating typed languages.
 
-- [Cur](https://github.com/wilbowma/cur/tree/turnstile-core):
+- [Cur](https://github.com/wilbowma/cur):
   An extensible Coq-inspired proof assistant.
 
 - [MLish](https://github.com/stchang/mlish):

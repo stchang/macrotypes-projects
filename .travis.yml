@@ -22,7 +22,6 @@ env:
     - NAME="MLish"           RACKET_VERSION="7.1"
     - NAME="MLish"           RACKET_VERSION="7.6"
     - NAME="MLish"           RACKET_VERSION="HEAD"
-    - NAME="Cur"             RACKET_VERSION="7.0"
     - NAME="Cur"             RACKET_VERSION="7.6"
     - NAME="Cur"             RACKET_VERSION="HEAD"
     - NAME="Cur2020"         RACKET_VERSION="7.0"
