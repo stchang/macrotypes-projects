@@ -21,7 +21,7 @@ case $NAME in
 	raco test --package cur-test
 	;;
     "SBPV Scheme")
-	raco test "${RACO_FLAGS[@]}" --package sbpv
+	raco test "${RACO_FLAGS[@]}" --package fiddle
 	raco test "${RACO_FLAGS[@]}" --timeout 200 modal-scheme/examples/
 	;;
     "Typed Syndicate")

@@ -29,7 +29,7 @@ case $NAME in
 	;;
     "SBPV Scheme")
 	git clone https://github.com/maxsnew/modal-scheme.git
-	raco pkg install "${RACO_FLAGS[@]}" modal-scheme/sbpv/
+	raco pkg install "${RACO_FLAGS[@]}" modal-scheme/fiddle/
 	;;
     "Typed Syndicate")
 	git clone https://github.com/tonyg/syndicate.git
